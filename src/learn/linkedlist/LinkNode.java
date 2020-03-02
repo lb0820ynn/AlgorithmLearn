@@ -1,7 +1,6 @@
-package learn;
+package learn.linkedlist;
 
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
 
 /**
@@ -74,7 +73,7 @@ public class LinkNode {
     }
 
     /**
-     * 反转单链表 递归
+     * 015-反转单链表 递归
      * @param head
      * @return
      */
@@ -92,7 +91,7 @@ public class LinkNode {
     }
 
     /**
-     * 反转单链表 非递归
+     * 015-反转单链表 非递归
      * @param head
      * @return
      */
@@ -127,36 +126,10 @@ public class LinkNode {
     }
 
     /**
-     * 获取到倒数第k个节点
-     *
-     * @param head
-     * @param k
+     * 003-从尾到头打印链表
+     * @param listNode
+     * @return
      */
-    public static LinkNode getReverseNodeItem(LinkNode head, int k) {
-        if (head == null || head.next == null) {
-            return head;
-        }
-
-        LinkNode fir = head;
-        LinkNode sec = head;
-
-        while (fir != null && k > 0) {
-            fir = fir.next;
-            k--;
-        }
-
-        if (fir == null) {
-            return null;
-        }
-
-        while (fir != null) {
-            fir = fir.next;
-            sec = sec.next;
-        }
-
-        return sec;
-    }
-
     public static ArrayList<Integer> printListFromTailToHead(LinkNode listNode) {
         Stack<Integer> stack = new Stack();
         while (listNode != null) {
@@ -172,7 +145,7 @@ public class LinkNode {
     }
 
     /**
-     * 获取到倒数第k个节点
+     * 014-链表中倒数第k个结点
      *
      * @param head
      * @param k
@@ -200,7 +173,7 @@ public class LinkNode {
     }
 
     /**
-     * 合并链表
+     * 016-合并链表
      * <p>
      * 输入两个单调递增的链表，输出两个链表合成后的链表，
      * 当然我们需要合成后的链表满足单调不减规则。

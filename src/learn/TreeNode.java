@@ -89,7 +89,7 @@ public class TreeNode {
 
 //        TreeNode treeNode1 = reConstructBinaryTree(new int[]{1, 2, 4, 7, 3, 5, 6, 8}, new int[]{4, 7, 2, 1, 5, 3, 8, 6});
 //        firTraver(treeNode1);
-//        middleTraver(treeNode1);
+//        middleTraver(treeNode1
     }
 
     public static void firTraver(TreeNode root) {

@@ -28,9 +28,13 @@ public class ArrayLearn {
         printMatrix(matrixArray);
 
         System.out.println();
-        int[] arr = new int[]{1,2,3,2,2,2,5,4,2,1};
+        int[] arr = new int[]{1, 2, 3, 2, 2, 2, 5, 4, 2, 1};
         int result = MoreThanHalfNum_Solution(arr);
         System.out.print(result);
+
+        System.out.println();
+
+        System.out.print(Power(2, 5));
 
     }
 
@@ -260,6 +264,53 @@ public class ArrayLearn {
             return result;
         }
 
+    }
+
+    public static double Power(double base, int exponent) {
+        if (equal(base, 0.0)) {
+            return 0;
+        }
+        if (exponent == 0) {
+            return 1;
+        }
+        int absExponent = Math.abs(exponent);
+        double result = getValue4Exponent(base, absExponent);
+
+        return exponent < 0 ? 1 / result : result;
+    }
+
+    public static double getValue4Exponent(double base, int exponent) {
+        if (exponent == 0) {
+            return 1;
+        }
+        if (exponent == 1) {
+            return base;
+        }
+        double result = 1;
+        double curr = base;
+
+
+        while (exponent != 0) {
+            if ((exponent & 1) == 1)
+                result *= curr;
+            curr *= curr;// 翻倍
+            exponent >>= 1;// 右移一位
+        }
+
+//        double result = getValue4Exponent(base, exponent >> 1);
+//        result *= result;
+//        if ((exponent & 0x1) == 1) {
+//            result *= base;
+//        }
+        return result;
+    }
+
+
+    static boolean equal(double num1, double num2) {
+        if (num1 - num2 > -0.000001 && num1 - num2 < 0.000001)
+            return true;
+        else
+            return false;
     }
 
 }

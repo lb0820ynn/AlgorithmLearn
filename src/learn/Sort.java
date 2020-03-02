@@ -46,6 +46,42 @@ public class Sort {
         }
     }
 
+    public static void quickSortPartition(int[] arr, int low, int high) {
+        if (low == high) {
+            return;
+        }
+        int index = partition(arr, low, high);
+
+        if (index > low) {
+            quickSortPartition(arr, low, index - 1);
+        }
+        if (index < high) {
+            quickSortPartition(arr, index + 1, high);
+        }
+    }
+
+    public static int partition(int[] arr, int start, int end) {
+        if (arr == null || arr.length <= 0 || start < 0 || end >= arr.length) {
+            throw new RuntimeException("data is error");
+        }
+        int key = start;
+        swap(arr, key, end);
+
+        int small = start - 1;
+        for (int i = start; i < end; i++) {
+            if (arr[i] < arr[end]) {
+                ++small;
+                if (small != i) {
+                    swap(arr, small, i);
+                }
+            }
+        }
+        ++small;
+        swap(arr, small, end);
+        Utils.printIntArr(arr);
+        return small;
+    }
+
     public static void swap(int[] array, int index1, int index2) {
         int temp = array[index1];
         array[index1] = array[index2];
@@ -85,7 +121,12 @@ public class Sort {
         int[] arr = {6, 5, 9, 8, 2, 3, 2, 10, 15};
 //        int[] arr = {3, 7, 2, 8, 5, 9,10};
 
-        heapSort(arr);
+//        quickSortPartition(arr, 0, arr.length - 1);
+//        getMinNumbersWithQuickSort(arr, 5);
+//        int[] arr2 = {1, -2, 3, 10, -4, 7, 2, -5};
+        int[] arr2 = {6, -3, -2, 7, -15, 1, 2, 2};
+        getMinNumbers(arr, 5);
+        FindGreatestSumOfSubArray(arr2);
 
 //        arr = mergeSort(arr, 0, arr.length - 1);
 
@@ -239,7 +280,75 @@ public class Sort {
             }
         }
 
+        Utils.printIntArr(rangeArr);
         return rangeArr;
 
+    }
+
+    /**
+     * 从一个数组中获取k个最小值
+     *
+     * @param arr
+     * @param k
+     * @return
+     */
+    public static int[] getMinNumbersWithQuickSort(int[] arr, int k) {
+        if (arr == null || k >= arr.length) {
+            throw new RuntimeException("k is too big");
+        }
+        if (k == arr.length - 1) {
+            return arr;
+        }
+        int start = 0;
+        int end = arr.length - 1;
+        int index = partition(arr, start, end);
+        while (index != k - 1) {
+            if (index > k - 1) {
+                end = index - 1;
+                index = partition(arr, start, end);
+            } else {
+                start = index + 1;
+                index = partition(arr, start, end);
+            }
+        }
+        int[] outPut = new int[k];
+        for (int i = 0; i < k; i++) {
+            outPut[i] = arr[i];
+        }
+        Utils.printIntArr(outPut);
+        return outPut;
+    }
+
+    /**
+     * HZ偶尔会拿些专业问题来忽悠那些非计算机专业的同学。今天测试组开完会后,他又发话了:在古老的一维模式识别中,常常需要计算连续子向量的最大和,当向量全为正数的时候,
+     * 问题很好解决。但是,如果向量中包含负数,是否应该包含某个负数,并期望旁边的正数会弥补它呢？例如:{6,-3,-2,7,-15,1,2,2},连续子向量的最大和为8(从第0个开始,到第3个为止)。
+     * 给一个数组，返回它的最大连续子序列的和，你会不会被他忽悠住？(子向量的长度至少是1)
+     *
+     * @param array
+     * @return
+     */
+    public static int FindGreatestSumOfSubArray(int[] array) {
+        if (array == null || array.length < 0) {
+            return 0;
+        }
+        if (array.length == 1) {
+            return array[0];
+        }
+        int mCurrentSum = 0;
+        int mGreatestSum = Integer.MIN_VALUE;
+
+        for (int i = 0; i < array.length; i++) {
+            if (mCurrentSum <= 0) {
+                mCurrentSum = array[i];
+            } else {
+                mCurrentSum = mCurrentSum + array[i];
+            }
+            if (mCurrentSum > mGreatestSum) {
+                mGreatestSum = mCurrentSum;
+            }
+        }
+        System.out.print("greatest num == " + mGreatestSum);
+        System.out.println();
+        return mGreatestSum;
     }
 }

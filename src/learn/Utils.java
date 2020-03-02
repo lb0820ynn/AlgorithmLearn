@@ -15,4 +15,15 @@ public class Utils {
             System.out.print(item.toString() + " ");
         }
     }
+    public static void printIntArr(int[] arr) {
+        if (arr == null) {
+            return;
+        }
+        for (int item : arr) {
+            System.out.print(item + " ");
+        }
+        System.out.println();
+    }
+
+
 }
