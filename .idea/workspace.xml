@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="6a94a9e7-1856-4196-9df7-0d1a82f7bf54" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/learn/tree/readme.md" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/out/production/FaceLearn/learn/TreeNode.class" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/learn/TreeNode.java" afterPath="$PROJECT_DIR$/src/learn/tree/TreeNode.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/learn/stackandqueue/readme.md" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/src/learn/MyStack.java" afterPath="$PROJECT_DIR$/src/learn/stackandqueue/MyStack.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/learn/MyStack.java" afterPath="$PROJECT_DIR$/src/learn/MyStack.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/learn/linkedlist/LinkNode.java" afterPath="$PROJECT_DIR$/src/learn/linkedlist/LinkNode.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/learn/linkedlist/readme.md" afterPath="$PROJECT_DIR$/src/learn/linkedlist/readme.md" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -36,25 +32,12 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="README.md" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/README.md">
-          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-            <state split_layout="SPLIT">
-              <first_editor relative-caret-position="270">
-                <caret line="18" column="17" lean-forward="false" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
-                <folding />
-              </first_editor>
-              <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="readme.md" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/learn/linkedlist/readme.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="3096">
-                <caret line="327" column="6" lean-forward="false" selection-start-line="327" selection-start-column="2" selection-end-line="327" selection-end-column="6" />
+              <first_editor relative-caret-position="0">
+                <caret line="0" column="4" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -62,7 +45,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="TreeNode.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TreeNode.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/learn/tree/TreeNode.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="10710">
@@ -79,26 +62,55 @@
         </entry>
       </file>
       <file leaf-file-name="MyStack.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/learn/MyStack.java">
+        <entry file="file://$PROJECT_DIR$/src/learn/stackandqueue/MyStack.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="27" />
+            <state relative-caret-position="2018">
+              <caret line="214" column="14" lean-forward="true" selection-start-line="214" selection-start-column="14" selection-end-line="214" selection-end-column="14" />
               <folding>
-                <element signature="e#1422#1423#0" expanded="true" />
-                <element signature="e#1455#1456#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1707#1716#0" expanded="true" />
+                <element signature="e#1801#1802#0" expanded="true" />
+                <element signature="e#1827#1828#0" expanded="true" />
+                <element signature="e#1857#1858#0" expanded="true" />
+                <element signature="e#1890#1891#0" expanded="true" />
+                <element signature="e#3146#3155#0" expanded="true" />
+                <element signature="e#3196#3205#0" expanded="true" />
+                <element signature="e#3282#3283#0" expanded="true" />
+                <element signature="e#3315#3316#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Queue.java" pinned="false" current-in-tab="false">
-        <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/src.zip!/java/util/Queue.java">
+      <file leaf-file-name="McpManager.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/learn/thread/McpManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2475">
-              <caret line="198" column="6" lean-forward="false" selection-start-line="198" selection-start-column="6" selection-end-line="198" selection-end-column="6" />
-              <folding>
-                <element signature="e#0#8063#0" expanded="false" />
-              </folding>
+            <state relative-caret-position="-244">
+              <caret line="33" column="50" lean-forward="false" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="McpManagerTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/learn/thread/McpManagerTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="11" column="50" lean-forward="false" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="readme.md" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/learn/stackandqueue/readme.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="0">
+                <caret line="0" column="9" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
+                <folding />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -109,18 +121,6 @@
             <state relative-caret-position="149">
               <caret line="93" column="19" lean-forward="false" selection-start-line="93" selection-start-column="16" selection-end-line="93" selection-end-column="19" />
               <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ArrayLearn.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/learn/ArrayLearn.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="313">
-              <caret line="243" column="14" lean-forward="false" selection-start-line="243" selection-start-column="12" selection-end-line="243" selection-end-column="14" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -139,9 +139,13 @@
         <entry file="file://$PROJECT_DIR$/src/learn/tree/readme.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
-              <first_editor relative-caret-position="573">
+              <first_editor relative-caret-position="3210">
                 <caret line="214" column="4" lean-forward="false" selection-start-line="214" selection-start-column="4" selection-end-line="214" selection-end-column="4" />
-                <folding />
+                <folding>
+                  <marker date="1584264446565" expanded="true" signature="6662:6745" ph="/.../" />
+                  <marker date="1584264446565" expanded="true" signature="9575:9594" ph=" { " />
+                  <marker date="1584264446565" expanded="true" signature="9609:9623" ph=" }" />
+                </folding>
               </first_editor>
               <second_editor />
             </state>
@@ -226,6 +230,8 @@
         <option value="$PROJECT_DIR$/src/learn/tree/readme.md" />
         <option value="$PROJECT_DIR$/src/learn/linkedlist/LinkNode.java" />
         <option value="$PROJECT_DIR$/src/learn/tree/TreeNode.java" />
+        <option value="$PROJECT_DIR$/src/learn/stackandqueue/readme.md" />
+        <option value="$PROJECT_DIR$/src/learn/stackandqueue/MyStack.java" />
       </list>
     </option>
   </component>
@@ -421,7 +427,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="tree" />
+              <option name="myItemId" value="stackandqueue" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -1021,12 +1027,12 @@
       <workItem from="1553589560039" duration="8620000" />
       <workItem from="1582947258230" duration="1186000" />
       <workItem from="1582966610552" duration="14361000" />
-      <workItem from="1583757902985" duration="6290000" />
+      <workItem from="1583757902985" duration="8343000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="151305000" />
+    <option name="totallyTimeSpent" value="153358000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1054,8 +1060,9 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32876712" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.18336026" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30936995" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739726" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24959612" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1069,7 +1076,6 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32670453" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3296875" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32739726" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1114,14 +1120,14 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/learn/MyStack.java</url>
-          <line>129</line>
+          <url>file://$PROJECT_DIR$/src/learn/stackandqueue/MyStack.java</url>
+          <line>179</line>
           <properties />
           <option name="timeStamp" value="41" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/learn/MyStack.java</url>
-          <line>131</line>
+          <url>file://$PROJECT_DIR$/src/learn/stackandqueue/MyStack.java</url>
+          <line>181</line>
           <properties />
           <option name="timeStamp" value="42" />
         </line-breakpoint>
@@ -1180,13 +1186,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/jre/lib/rt.jar!/sun/misc/Unsafe.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="13" column="19" lean-forward="false" selection-start-line="13" selection-start-column="19" selection-end-line="13" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.7.0_79.jdk/Contents/Home/src.zip!/java/util/concurrent/ConcurrentHashMap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="22500">
@@ -1212,20 +1211,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="5190">
           <caret line="385" column="32" lean-forward="false" selection-start-line="385" selection-start-column="27" selection-end-line="385" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/learn/thread/McpManagerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="11" column="50" lean-forward="false" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/learn/thread/McpManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="33" column="50" lean-forward="false" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
         </state>
       </provider>
     </entry>
@@ -1734,17 +1719,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/learn/MyStack.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="4" column="0" lean-forward="false" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="27" />
-          <folding>
-            <element signature="e#1422#1423#0" expanded="true" />
-            <element signature="e#1455#1456#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_141.jdk/Contents/Home/src.zip!/java/util/HashMap.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2789">
@@ -1753,11 +1727,19 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/learn/tree/readme.md">
+    <entry file="file://$PROJECT_DIR$/src/learn/linkedlist/LinkNode.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="625">
+          <caret line="372" column="5" lean-forward="false" selection-start-line="372" selection-start-column="5" selection-end-line="372" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/learn/stackandqueue/readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="573">
-            <caret line="214" column="4" lean-forward="false" selection-start-line="214" selection-start-column="4" selection-end-line="214" selection-end-column="4" />
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="9" lean-forward="false" selection-start-line="0" selection-start-column="9" selection-end-line="0" selection-end-column="9" />
             <folding />
           </first_editor>
           <second_editor />
@@ -1767,19 +1749,11 @@
     <entry file="file://$PROJECT_DIR$/src/learn/linkedlist/readme.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="3096">
-            <caret line="327" column="6" lean-forward="false" selection-start-line="327" selection-start-column="2" selection-end-line="327" selection-end-column="6" />
+          <first_editor relative-caret-position="0">
+            <caret line="0" column="4" lean-forward="false" selection-start-line="0" selection-start-column="4" selection-end-line="0" selection-end-column="4" />
             <folding />
           </first_editor>
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/learn/linkedlist/LinkNode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="625">
-          <caret line="372" column="5" lean-forward="false" selection-start-line="372" selection-start-column="5" selection-end-line="372" selection-end-column="5" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1794,6 +1768,56 @@
             <element signature="e#10708#10709#0" expanded="true" />
             <element signature="e#10746#10747#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/learn/tree/readme.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="3210">
+            <caret line="214" column="4" lean-forward="false" selection-start-line="214" selection-start-column="4" selection-end-line="214" selection-end-column="4" />
+            <folding>
+              <marker date="1584264446565" expanded="true" signature="6662:6745" ph="/.../" />
+              <marker date="1584264446565" expanded="true" signature="9575:9594" ph=" { " />
+              <marker date="1584264446565" expanded="true" signature="9609:9623" ph=" }" />
+            </folding>
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/learn/stackandqueue/MyStack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2018">
+          <caret line="214" column="14" lean-forward="true" selection-start-line="214" selection-start-column="14" selection-end-line="214" selection-end-column="14" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1707#1716#0" expanded="true" />
+            <element signature="e#1801#1802#0" expanded="true" />
+            <element signature="e#1827#1828#0" expanded="true" />
+            <element signature="e#1857#1858#0" expanded="true" />
+            <element signature="e#1890#1891#0" expanded="true" />
+            <element signature="e#3146#3155#0" expanded="true" />
+            <element signature="e#3196#3205#0" expanded="true" />
+            <element signature="e#3282#3283#0" expanded="true" />
+            <element signature="e#3315#3316#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/learn/thread/McpManagerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="11" column="50" lean-forward="false" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/learn/thread/McpManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-244">
+          <caret line="33" column="50" lean-forward="false" selection-start-line="33" selection-start-column="50" selection-end-line="33" selection-end-column="50" />
+          <folding />
         </state>
       </provider>
     </entry>
