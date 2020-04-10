@@ -1,3 +1,41 @@
+## 最小的k个数
+
+思路是构建k个数的最大堆，此时第一个元素为堆中最大的元素，然后从k遍历数组，遇到比堆中最大元素小的，则把两个元素交换,遍历完则可以保证堆中的k个数是最小的k个数。此处PriorityQueue可以用buildMaxHeap替代。
+
+```java
+		/**
+     * 利用最大堆
+     *
+     * @param arr
+     * @param k
+     * @return
+     */
+    public static int[] getMinNumbers(int[] arr, int k) {
+        PriorityQueue<Integer> queue = new PriorityQueue<>(new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                return o2 - o1;
+            }
+        });
+        for (int i = 0; i < k; i++) {
+            queue.add(arr[i]);
+        }
+        for (int i = k; i < arr.length; i++) {
+            if (queue.peek() > arr[i]) {
+                queue.poll();
+                queue.add(arr[i]);
+            }
+        }
+        int res[] = new int[k];
+        for (int i = 0; i < k; i++) {
+            res[i] = queue.poll();
+        }
+        return res;
+    }
+```
+
+
+
 ## 排序相关
 
 ### 1.快速排序

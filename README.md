@@ -12,7 +12,7 @@
   - 036-两个链表的第一个公共结点
   - 055-链表中环的入口结点
   - 056-删除链表中重复的结点
-- Tree 
+- Tree  [树类题目](https://github.com/lb0820ynn/AlgorithmLearn/blob/master/src/learn/tree/readme.md)
   - 004-重建二叉树
   - 017-树的子结构
   - 018-二叉树的镜像
@@ -28,15 +28,15 @@
   - 060-把二叉树打印成多行
   - 061-序列化二叉树
   - 062-二叉搜索树的第k个结点
-- Stack & Queue 
+- Stack & Queue [栈和队列类题目](https://github.com/lb0820ynn/AlgorithmLearn/blob/master/src/learn/stackandqueue/readme.md)
   - 005-用两个栈实现队列
   - 020-包含min函数的栈
   - 021-栈的压入、弹出序列
   - 044-翻转单词顺序列(栈)
   - 064-滑动窗口的最大值(双端队列)
-- Heap 
+- Heap 及排序 [排序及最小的k个数](https://github.com/lb0820ynn/AlgorithmLearn/blob/master/src/learn/sort/readme.md)
   - **029-最小的K个数**
-- Hash Table 
+- Hash Table [见该链接034](https://github.com/lb0820ynn/AlgorithmLearn/blob/master/src/learn/other/readme.md)
   - 034-第一个只出现一次的字符
 - 图 
   - 065-矩阵中的路径(BFS)
