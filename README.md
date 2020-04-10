@@ -38,38 +38,38 @@
   - **029-最小的K个数**
 - Hash Table [见该链接034](https://github.com/lb0820ynn/AlgorithmLearn/blob/master/src/learn/other/readme.md)
   - 034-第一个只出现一次的字符
-- 图 
+- 图  [矩阵相关算法](https://github.com/lb0820ynn/AlgorithmLearn/blob/master/src/learn/matrix/readme.md)
   - 065-矩阵中的路径(BFS)
   - 066-机器人的运动范围(DFS)
 
 ### 具体算法类题目
 
-- 斐波那契数列 
+- 斐波那契数列  [斐波那契数列相关算法](https://github.com/lb0820ynn/AlgorithmLearn/blob/master/src/learn/fibonacci/readme.md)
   - 007-斐波拉契数列
   - 008-跳台阶
   - 009-变态跳台阶
   - 010-矩形覆盖
-- 搜索算法 
+- 搜索算法 [搜索类算法，二分查找](https://github.com/lb0820ynn/AlgorithmLearn/blob/master/src/learn/search/readme.md)
   - 001-二维数组查找
   - 006-旋转数组的最小数字（二分查找）
   - 037-数字在排序数组中出现的次数（二分查找）
-- 全排列 
+- 全排列 [字符串全排列](https://github.com/lb0820ynn/AlgorithmLearn/blob/master/src/learn/jz027/readme.md)
   - 027-字符串的排列
-- 动态规划 
+- 动态规划 [动态规划相关算法](https://github.com/lb0820ynn/AlgorithmLearn/blob/master/src/learn/dp/readme.md)
   - 030-连续子数组的最大和
   - 052-正则表达式匹配(我用的暴力)
-- 回溯 
+- 回溯  [同矩阵相关算法](https://github.com/lb0820ynn/AlgorithmLearn/blob/master/src/learn/matrix/readme.md)
   - 065-矩阵中的路径(BFS)
   - 066-机器人的运动范围(DFS)
-- 排序 
+- 排序 [排序算法及相关应用](https://github.com/lb0820ynn/AlgorithmLearn/blob/master/src/learn/sort/readme.md)
   - 035-数组中的逆序对(归并排序)
   -  **029-最小的K个数**(堆排序)
   -  **029-最小的K个数**(快速排序)
-- 位运算 
+- 位运算 [位运算相关算法](https://github.com/lb0820ynn/AlgorithmLearn/blob/master/src/learn/bit/readme.md)
   - 011-二进制中1的个数
   - 012-数值的整数次方
   - 040-数组中只出现一次的数字
-- 其他算法 
+- 其他算法 [其他多个算法，待补充](https://github.com/lb0820ynn/AlgorithmLearn/blob/master/src/learn/other/readme.md)
   - 002-替换空格
   - 013-调整数组顺序使奇数位于偶数前面
   - 028-数组中出现次数超过一半的数字
