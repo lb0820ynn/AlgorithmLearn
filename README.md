@@ -3,7 +3,7 @@
 
 ### 数据结构类题目
 
-- LinkedList 
+- LinkedList [链表类题目](https://github.com/lb0820ynn/AlgorithmLearn/blob/master/src/learn/linkedlist/readme.md)
   - 003-从尾到头打印链表
   - 014-链表中倒数第k个结点
   - 015-反转链表

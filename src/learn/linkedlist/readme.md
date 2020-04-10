@@ -247,63 +247,26 @@
 
   ### 思路
 
-  倒序看，p1和p2两个链表的第一个公共结点到尾结点的长度一定相同。因此我们先对齐两个链表，再一起往后走找到第一个公共结点即可。
+  ![a](https://s1.ax1x.com/2020/04/10/GTC56O.png)
 
-  - 1. 找出两个链表长度，n1和n2，长的链表先走n1-n2步。
-  - 1. 一起往后走，找到第一个公共结点。
+  p1和p2两个链表如果存在公共结点,p1到公共结点的距离为a,公共结点到尾部的距离为b,p2到公共结点的距离为c。
+
+  则p1向后走到尾部把next置为p2的头节点继续向后走到公共结点,所走的距离为a+b+c，而p2走到尾部后把next置为p1的头节点继续走到公共结点，所走的距离为c+b+a，可以发现路程相同，所以如果两个结点同时出发一定会在公共结点相遇，如果两个链表没有公共结点则两个结点走到最后都会为null。
+
+  
 
 ```java
-public ListNode FindFirstCommonNode(ListNode pHead1, ListNode pHead2) {
-        ListNode current1 = pHead1;// 链表1
-        ListNode current2 = pHead2;// 链表2
-        if (pHead1 == null || pHead2 == null)
-            return null;
-        int length1 = getLength(current1);
-        int length2 = getLength(current2);
-        // 两连表的长度差
-         
-        // 如果链表1的长度大于链表2的长度
-        if (length1 >= length2) {
-            int len = length1 - length2;
-            // 先遍历链表1，遍历的长度就是两链表的长度差
-            while (len > 0) {
-                current1 = current1.next;
-                len--;
-            }
- 
+public LinkNode FindFirstCommonNode(LinkNode pHead1, LinkNode pHead2) {
+        LinkNode p = pHead1;
+        LinkNode q = pHead2;
+        while (p != q) {
+            p = p != null ? p.next : pHead2;
+            q = q != null ? q.next : pHead1;
         }
-        // 如果链表2的长度大于链表1的长度
-        else if (length1 < length2) {
-            int len = length2 - length1;
-            // 先遍历链表1，遍历的长度就是两链表的长度差
-            while (len > 0) {
-                current2 = current2.next;
-                len--;
-            }
- 
-        }
-        //开始齐头并进，直到找到第一个公共结点
-        while(current1!=current2){
-            current1=current1.next;
-            current2=current2.next;
-        }
-        return current1;
- 
-    }
- 
-    // 求指定链表的长度
-    public static int getLength(ListNode pHead) {
-        int length = 0;
- 
-        ListNode current = pHead;
-        while (current != null) {
-            length++;
-            current = current.next;
-        }
-        return length;
+        return p;
     }
 ```
-  
+
 
 - 055-链表中环的入口结点
 
@@ -320,12 +283,12 @@ public ListNode FindFirstCommonNode(ListNode pHead1, ListNode pHead2) {
     **1、设置快慢指针，假如有环，他们最后一定相遇。**  
 
     **2、两个指针分别从链表头和相遇点继续出发，每次走一步，最后一定相遇与环入口。**
-   
+  
 
     **证明结论1**：设置快慢指针fast和low，fast每次走两步，low每次走一步。假如有环，两者一定会相遇（因为low一旦进环，可看作fast在后面追赶low的过程，每次两者都接近一步，最后一定能追上）。 
 
      **证明结论2：**
-   
+  
 
     设： 
 
@@ -335,7 +298,7 @@ public ListNode FindFirstCommonNode(ListNode pHead1, ListNode pHead2) {
 
     相遇点到环入口长度为--**c**  
 
-    **![img](https://uploadfiles.nowcoder.com/images/20180615/4240377_1529033184336_9A253E69EDBB4FD57BB16FC3A32C2756)**   
+    **![img](https://s1.ax1x.com/2020/04/10/GTSrOH.md.png)**   
 
     则：相遇时 
 
