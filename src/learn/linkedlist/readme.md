@@ -276,6 +276,8 @@ public LinkNode FindFirstCommonNode(LinkNode pHead1, LinkNode pHead2) {
 
   ### **思路：** 
 
+  ![img](https://s1.ax1x.com/2020/04/10/GTSrOH.md.png)
+
   ​      设置快慢指针，都从链表头出发，快指针每次**走两步**，慢指针一次**走一步**，假如有环，一定相遇于环中某点(结论1)。接着让两个指针分别从相遇点和链表头出发，两者都改为每次**走一步**，最终相遇于环入口(结论2)。以下是两个结论证明： 
 
   ###   两个结论： 
@@ -283,12 +285,12 @@ public LinkNode FindFirstCommonNode(LinkNode pHead1, LinkNode pHead2) {
     **1、设置快慢指针，假如有环，他们最后一定相遇。**  
 
     **2、两个指针分别从链表头和相遇点继续出发，每次走一步，最后一定相遇与环入口。**
-  
+
 
     **证明结论1**：设置快慢指针fast和low，fast每次走两步，low每次走一步。假如有环，两者一定会相遇（因为low一旦进环，可看作fast在后面追赶low的过程，每次两者都接近一步，最后一定能追上）。 
 
      **证明结论2：**
-  
+
 
     设： 
 
@@ -297,8 +299,6 @@ public LinkNode FindFirstCommonNode(LinkNode pHead1, LinkNode pHead2) {
     环入口到相遇点长度为--**b**  
 
     相遇点到环入口长度为--**c**  
-
-    **![img](https://s1.ax1x.com/2020/04/10/GTSrOH.md.png)**   
 
     则：相遇时 
 
