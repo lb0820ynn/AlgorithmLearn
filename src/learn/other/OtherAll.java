@@ -9,30 +9,155 @@ import java.util.stream.Collectors;
  * Created by liubin on 2020/3/15.
  */
 public class OtherAll {
+
     /**
-     * 001-二维数组查找
+     * 002-替换空格
      *
-     * @param target
-     * @param array
+     * @param str
      * @return
      */
-    public boolean Find(int target, int[][] array) {
-        int row = 0;
-        int col = array[0].length - 1;
-        while (row <= array.length - 1 && col >= 0) {
-            if (target == array[row][col])
-                return true;
-            else if (target > array[row][col])
-                row++;
-            else
-                col--;
+    public String replaceSpace(StringBuffer str) {
+        if (str == null) {
+            return null;
         }
-        return false;
-
+        StringBuilder newStr = new StringBuilder();
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == ' ') {
+                newStr.append('%');
+                newStr.append('2');
+                newStr.append('0');
+            } else {
+                newStr.append(str.charAt(i));
+            }
+        }
+        return newStr.toString();
     }
 
     /**
-     * 丑数
+     * 013-调整数组顺序使奇数位于偶数前面
+     * <p>
+     * 输入一个整数数组，实现一个函数来调整该数组中数字的顺序，使得所有的奇数位于数组的前半部分，
+     * 所有的偶数位于数组的后半部分，并保证奇数和奇数，偶数和偶数之间的相对位置不变。
+     *
+     * @param array
+     */
+    public static void reOrderArray(int[] array) {
+        List<Integer> oddList = new ArrayList<>();
+        List<Integer> evenList = new ArrayList<>();
+
+        for (int i = 0; i < array.length; i++) {
+            if (array[i] % 2 == 0) {
+                evenList.add(array[i]);
+            } else {
+                oddList.add(array[i]);
+            }
+        }
+        for (int j = 0; j < oddList.size(); j++) {
+            array[j] = oddList.get(j);
+        }
+        int endIndexOdd = oddList.size();
+        for (int k = 0; k < evenList.size(); k++) {
+            array[k + endIndexOdd] = evenList.get(k);
+        }
+    }
+
+    /**
+     * 028-数组中出现次数超过一半的数字
+     * 数组求众数
+     * 数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。
+     * 例如输入一个长度为9的数组{1,2,3,2,2,2,5,4,2}。由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0。
+     *
+     * @param array
+     * @return
+     */
+    public static int MoreThanHalfNum_Solution(int[] array) {
+        if (array == null || array.length <= 0) {
+            return 0;
+        }
+        int times = 1;
+        int result = array[0];
+
+        for (int j = 1; j < array.length; j++) {
+            if (times == 0) {
+                result = array[j];
+                times = 1;
+            } else {
+                if (array[j] == result) {
+                    times++;
+                } else {
+                    times--;
+                }
+            }
+        }
+        int realTime = 0;
+        for (int k = 0; k < array.length; k++) {
+            if (result == array[k]) {
+                realTime++;
+            }
+        }
+        if (realTime * 2 <= array.length) {
+            return 0;
+        } else {
+            return result;
+        }
+    }
+
+    /**
+     * 031-整数中1出现的次数（从1到n整数中1出现的次数）
+     *
+     * @param n
+     * @return
+     */
+    public int NumberOf1Between1AndN_Solution(int n) {
+        if (n <= 1) {
+            return n;
+        }
+        int left = 0, right = 0, current = 0;
+        int factor = 1;
+        int res = 0;
+        while (n / factor != 0) {
+            left = n / (factor * 10);
+            right = n - (n / factor) * factor;
+            current = (n / factor) % 10;
+            res += left * factor;
+            if (current == 1) {
+                res += right + 1;
+            } else if (current > 1) {
+                res += factor;
+            }
+            factor *= 10;
+        }
+        return res;
+    }
+
+    /**
+     * 032-把数组排成最小的数
+     * 输入一个正整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。例如输入数组{3，32，321}，
+     * 则打印出这三个数字能排成的最小数字为321323。
+     *
+     * @param numbers
+     * @return
+     */
+    public String PrintMinNumber(int[] numbers) {
+        List<Integer> list = Arrays.stream(numbers).boxed().collect(Collectors.<Integer>toList());
+        Collections.sort(list, new Comparator<Integer>() {
+            @Override
+            public int compare(Integer o1, Integer o2) {
+                String s1 = String.valueOf(o1);
+                String s2 = String.valueOf(o2);
+                return Integer.valueOf(s1 + s2) - Integer.valueOf(s2 + s1);
+            }
+        });
+        StringBuilder res = new StringBuilder();
+        for (Integer i : list) {
+            res.append(String.valueOf(i));
+        }
+        return res.toString();
+    }
+
+
+    /**
+     * 033-丑数
      *
      * @param index
      * @return
@@ -59,84 +184,149 @@ public class OtherAll {
     }
 
     /**
-     * 数组中只出现一次的两个数字
+     * 041-和为s的连续正整数序列
+     * 小明很喜欢数学,有一天他在做数学作业时,要求计算出9~16的和,他马上就写出了正确答案是100。
+     * 但是他并不满足于此,他在想究竟有多少种连续的正数序列的和为100(至少包括两个数)。
+     * 没多久,他就得到另一组连续正数和为100的序列:18,19,20,21,22。
+     * 现在把问题交给你,你能不能也很快的找出所有和为S的连续正数序列? Good Luck!
      *
-     * @param array
-     * @param num1
-     * @param num2
-     */
-    public void FindNumsAppearOnce(int[] array, int num1[], int num2[]) {
-        int sum = 0;
-        for (int i : array) {
-            sum ^= i;
-        }
-        int k = 0;
-        while (!((sum >> k & 1) == 1)) {
-            k++;
-        }
-        for (int j : array) {
-            if ((j >> k & 1) == 1) {
-                num1[0] ^= j;
-            }
-        }
-        num2[0] = num1[0] ^ sum;
-    }
-
-
-    /**
-     * 在一个数组中除了一个数字只出现一次之外，其他数字都出现了三次。
-     * 请找出那个只出现一次的数字。
-     * 你可以假设满足条件的数字一定存在。
-     * 思考题：
-     * 如果要求只使用 O(n) 的时间和额外 O(1) 的空间，该怎么做呢？
-     *
-     * @param nums
+     * @param sum
      * @return
      */
-    public int findNumberAppearingOnce(int[] nums) {
-        int ones = 0, twos = 0;
-        for (int x : nums) {
-            ones = (ones ^ x) & ~twos;
-            twos = (twos ^ x) & ~ones;
+    public ArrayList<ArrayList<Integer>> FindContinuousSequence(int sum) {
+        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
+        int s = 1;
+        for (int i = 1, j = 1; i <= sum; i++) {
+            while (s < sum) {
+                j++;
+                s += j;
+            }
+            if (s == sum && j > i) {
+                ArrayList<Integer> list = new ArrayList<>();
+                for (int k = i; k <= j; k++) {
+                    list.add(k);
+                }
+                res.add(list);
+            }
+            s -= i;
         }
-        System.out.println("ones == " + ones + "  twos == " + twos);
-        return ones;
+        return res;
     }
 
     /**
-     * 在一个数组中除了两个个数字只出现一次之外，其他数字都出现了三次。
-     * 请找出两个只出现一次的数字。
-     * 你可以假设满足条件的数字一定存在
+     * 042-和为s的两个数字
+     * 输入一个递增排序的数组和一个数字S，在数组中查找两个数，使得他们的和正好是S，
+     * 如果有多对数字的和等于S，输出两个数的乘积最小的。
      *
-     * @param nums
+     * @param array
+     * @param sum
+     * @return
      */
-    public void findNumberAppearingOnce2(int[] nums) {
-        int ones = 0, twos = 0;
-        for (int i : nums) {
-            ones = (ones ^ i) & ~twos;
-            twos = (twos ^ i) & ~ones;
-        }
-        int k = 0;
-        while (!((ones >> k & 1) == 1)) {
-            k++;
-        }
-        ones = 0;
-        twos = 0;
-        int ones2 = 0, twos2 = 0;
-        for (int j : nums) {
-            if ((j >> k & 1) == 1) {
-                ones = (ones ^ j) & ~twos;
-                twos = (twos ^ j) & ~ones;
+    public ArrayList<Integer> FindNumbersWithSum(int[] array, int sum) {
+        ArrayList<Integer> res = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
+        int product = Integer.MAX_VALUE;
+        for (int i = 0; i < array.length; i++) {
+            int temp = sum - array[i];
+            if (list.contains(temp)) {
+                if (temp * array[i] < product) {
+                    product = temp * array[i];
+                    res.clear();
+                    res.add(Math.min(temp, array[i]));
+                    res.add(Math.max(temp, array[i]));
+                }
             } else {
-                ones2 = (ones2 ^ j) & ~twos2;
-                twos2 = (twos2 ^ j) & ~ones2;
+                list.add(array[i]);
             }
         }
-        System.out.println("res1 == " + ones + "  res2 == " + ones2);
+        return res;
     }
 
     /**
-     * 找出数组中重复的数字
+     * 043-左旋转字符串(先反转字符串，然后把字符串从0～s-n反转，然后反转s-n+1～s)
+     *
+     * @param str
+     * @param n
+     * @return
+     */
+    public String LeftRotateString(String str, int n) {
+        if (str == null || "".equals(str)) {
+            return "";
+        }
+        if (n >= str.length()) {
+            return str;
+        }
+        char[] arr = str.toCharArray();
+        int s = arr.length - 1;
+        reverse(arr, 0, s);
+        reverse(arr, 0, s - n);
+        reverse(arr, s - n + 1, s);
+        return String.valueOf(arr);
+    }
+
+    public void reverse(char[] arr, int start, int end) {
+        while (start < end) {
+            swap(arr, start, end);
+            start++;
+            end--;
+        }
+    }
+
+    public void swap(char[] arr, int i, int j) {
+        char temp = arr[i];
+        arr[i] = arr[j];
+        arr[j] = temp;
+    }
+
+    /**
+     * 046-孩子们的游戏-圆圈中最后剩下的数(约瑟夫环)
+     *
+     * @param n
+     * @param m
+     * @return
+     */
+    public int LastRemaining_Solution(int n, int m) {
+        if (n == 0) {
+            return -1;
+        }
+
+        return dp(n, m);
+
+    }
+
+    public int dp(int n, int m) {
+        if (n == 1) {
+            return 0;
+        }
+        return (dp(n - 1, m) + m) % n;
+    }
+
+    /**
+     * 051-构建乘积数组
+     * @param A
+     * @return
+     */
+    public int[] multiply(int[] A) {
+        if(A == null || A.length <=0){
+            return null;
+        }
+        int n = A.length;
+        int[] res = new int[n];
+        int p = 1;
+        for(int i = 0; i < n; i++){
+            res[i] = p;
+            p *= A[i];
+        }
+        p = 1;
+        for(int i = n - 1; i >= 0; i--){
+            res[i] *= p;
+            p *= A[i];
+        }
+        return res;
+    }
+
+    /**
+     * 050-找出数组中重复的数字
      * <p>
      * 在一个长度为n的数组里的所有数字都在0到n-1的范围内。 数组中某些数字是重复的，但不知道有几个数字是重复的。
      * 也不知道每个数字重复几次。请找出数组中任意一个重复的数字。
@@ -167,68 +357,6 @@ public class OtherAll {
         numbers[i] = numbers[j];
         numbers[j] = temp;
     }
-
-
-    class Point {
-        int fir;
-        int second;
-
-        public Point(int x, int y) {
-            fir = x;
-            second = y;
-        }
-    }
-
-    public int getSingleSum(int p) {
-        int s = 0;
-        while (p > 0) {
-            s += (p % 10);
-            p /= 10;
-        }
-        return s;
-    }
-
-    public int getSum(Point p) {
-        return getSingleSum(p.fir) + getSingleSum(p.second);
-    }
-
-    /**
-     * 机器人的运动范围
-     * 地上有一个m行和n列的方格。一个机器人从坐标0,0的格子开始移动，每一次只能向左，右，上，下四个方向移动一格，
-     * 但是不能进入行坐标和列坐标的数位之和大于k的格子。 例如，当k为18时，机器人能够进入方格（35,37），因为3+5+3+7 = 18。
-     * 但是，它不能进入方格（35,38），因为3+5+3+8 = 19。请问该机器人能够达到多少个格子？
-     *
-     * @param threshold
-     * @param rows
-     * @param cols
-     * @return
-     */
-    public int movingCount(int threshold, int rows, int cols) {
-        Queue<Point> queue = new LinkedList<>();
-        boolean[][] arr = new boolean[rows][cols];
-        int res = 0;
-        queue.add(new Point(0, 0));
-
-        int[] dx = {-1, 0, 1, 0};
-        int[] dy = {0, 1, 0, -1};
-        while (!queue.isEmpty()) {
-            Point p = queue.poll();
-            if (getSum(p) > threshold || arr[p.fir][p.second]) {
-                continue;
-            }
-            res++;
-            arr[p.fir][p.second] = true;
-            for (int i = 0; i < 4; i++) {
-                int x = p.fir + dx[i];
-                int y = p.second + dy[i];
-                if (x >= 0 && x < rows && y >= 0 && y < cols) {
-                    queue.add(new Point(x, y));
-                }
-            }
-        }
-        return res;
-    }
-
 
     /**
      * 剪绳子
@@ -335,34 +463,6 @@ public class OtherAll {
         }
     }
 
-    public void NumberOf1Between1AndN_Solution() {
-    }
-
-    /**
-     * 把数组排成最小的数
-     * 输入一个正整数数组，把数组里所有数字拼接起来排成一个数，打印能拼接出的所有数字中最小的一个。例如输入数组{3，32，321}，
-     * 则打印出这三个数字能排成的最小数字为321323。
-     *
-     * @param numbers
-     * @return
-     */
-    public String PrintMinNumber(int[] numbers) {
-        List<Integer> list = Arrays.stream(numbers).boxed().collect(Collectors.<Integer>toList());
-        Collections.sort(list, new Comparator<Integer>() {
-            @Override
-            public int compare(Integer o1, Integer o2) {
-                String s1 = String.valueOf(o1);
-                String s2 = String.valueOf(o2);
-                return Integer.valueOf(s1 + s2) - Integer.valueOf(s2 + s1);
-            }
-        });
-        StringBuilder res = new StringBuilder();
-        for (Integer i : list) {
-            res.append(String.valueOf(i));
-        }
-        return res.toString();
-    }
-
     Map<Character, Integer> map = new HashMap<>();
     Queue<Character> q = new LinkedList<>();
 
@@ -395,63 +495,6 @@ public class OtherAll {
             return '#';
         }
         return q.peek();
-    }
-
-
-    /**
-     * 和为s的两个数字
-     * 输入一个递增排序的数组和一个数字S，在数组中查找两个数，使得他们的和正好是S，如果有多对数字的和等于S，输出两个数的乘积最小的。
-     *
-     * @param array
-     * @param sum
-     * @return
-     */
-    public ArrayList<Integer> FindNumbersWithSum(int[] array, int sum) {
-        ArrayList<Integer> res = new ArrayList<>();
-        List<Integer> list = new ArrayList<>();
-        int product = Integer.MAX_VALUE;
-        for (int i = 0; i < array.length; i++) {
-            int temp = sum - array[i];
-            if (list.contains(temp)) {
-                if (temp * array[i] < product) {
-                    product = temp * array[i];
-                    res.clear();
-                    res.add(Math.min(temp, array[i]));
-                    res.add(Math.max(temp, array[i]));
-                }
-            } else {
-                list.add(array[i]);
-            }
-        }
-        return res;
-    }
-
-    /**
-     * 和为s的连续正整数序列
-     * 小明很喜欢数学,有一天他在做数学作业时,要求计算出9~16的和,他马上就写出了正确答案是100。但是他并不满足于此,他在想究竟有多少种连续的正数序列的和为100(至少包括两个数)。
-     * 没多久,他就得到另一组连续正数和为100的序列:18,19,20,21,22。现在把问题交给你,你能不能也很快的找出所有和为S的连续正数序列? Good Luck!
-     *
-     * @param sum
-     * @return
-     */
-    public ArrayList<ArrayList<Integer>> FindContinuousSequence(int sum) {
-        ArrayList<ArrayList<Integer>> res = new ArrayList<>();
-        int s = 1;
-        for (int i = 1, j = 1; i <= sum; i++) {
-            while (s < sum) {
-                j++;
-                s += j;
-            }
-            if (s == sum && j > i) {
-                ArrayList<Integer> list = new ArrayList<>();
-                for (int k = i; k <= j; k++) {
-                    list.add(k);
-                }
-                res.add(list);
-            }
-            s -= i;
-        }
-        return res;
     }
 
 

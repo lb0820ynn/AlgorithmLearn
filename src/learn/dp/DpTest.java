@@ -7,13 +7,73 @@ public class DpTest {
 
     public static void main(String[] args) {
 
-//        zeroOnePack(10, 3, new int[]{0, 5, 4, 3}, new int[]{0, 20, 10, 12});
-//        zeroOnePack2(10, 3, new int[]{5, 4, 3}, new int[]{20, 10, 12});
-//        zeroOnePack3(10, 3, new int[]{5, 4, 1}, new int[]{20, 10, 12});
+        zeroOnePack(10, 3, new int[]{0, 5, 4, 3}, new int[]{0, 20, 10, 12});
+        zeroOnePack2(10, 3, new int[]{5, 4, 3}, new int[]{20, 10, 12});
+        zeroOnePack3(10, 3, new int[]{5, 4, 1}, new int[]{20, 10, 12});
 
         int coinChange = coinChange(5, new int[]{1, 2, 5});
         System.out.println("coinChange == " + coinChange);
     }
+
+    /**
+     * 030-连续子数组的最大和
+     * HZ偶尔会拿些专业问题来忽悠那些非计算机专业的同学。今天测试组开完会后,他又发话了:在古老的一维模式识别中,常常需要计算连续子向量的最大和,当向量全为正数的时候,
+     * 问题很好解决。但是,如果向量中包含负数,是否应该包含某个负数,并期望旁边的正数会弥补它呢？例如:{6,-3,-2,7,-15,1,2,2},连续子向量的最大和为8(从第0个开始,到第3个为止)。
+     * 给一个数组，返回它的最大连续子序列的和，你会不会被他忽悠住？(子向量的长度至少是1)
+     *
+     * @param array
+     * @return
+     */
+    public static int FindGreatestSumOfSubArray(int[] array) {
+        int res = Integer.MIN_VALUE;
+        int g = 0;
+        for (int i : array) {
+            if (g < 0) {
+                g = 0;
+            }
+            g += i;
+            res = Math.max(res, g);
+        }
+        System.out.print("greatest num == " + res);
+        System.out.println();
+        return res;
+    }
+
+
+    int m = 0;
+    int n = 0;
+    boolean[][] f;
+
+    /**
+     * 052-正则表达式匹配
+     *
+     * @param str
+     * @param pattern
+     * @return
+     */
+    public boolean match(char[] str, char[] pattern) {
+        m = str.length;
+        n = pattern.length;
+        f = new boolean[m + 1][n + 1];
+        return dp(0, 0, str, pattern);
+    }
+
+    public boolean dp(int i, int j, char[] s, char[] p) {
+        if (f[i][j]) {
+            return f[i][j];
+        }
+        if (j == n) {
+            return f[i][j] = i == m;
+        }
+        boolean firstMatch = i < m && (s[i] == p[j] || p[j] == '.');
+        if (j + 1 < n && p[j + 1] == '*') {
+            f[i][j] = dp(i, j + 2, s, p) || (firstMatch && dp(i + 1, j, s, p));
+        } else {
+            f[i][j] = firstMatch && dp(i + 1, j + 1, s, p);
+        }
+        return f[i][j];
+    }
+
 
     /**
      * 01背包问题
@@ -36,6 +96,9 @@ public class DpTest {
         print_array(dp);
     }
 
+    /**
+     * 一维数组解法
+     */
     public static void zeroOnePack2(int v, int n, int[] weight, int[] value) {
         int[] dp = new int[v + 1];
 
@@ -56,9 +119,7 @@ public class DpTest {
 
         for (int i = 1; i <= n; i++) {
             for (int j = v; j >= weight[i - 1]; j--) {
-                System.out.println("j== " + j + "  dp[j]==" + dp[j] + "  other == " + (dp[j - weight[i - 1]] + value[i - 1]));
                 dp[j] = Math.max(dp[j], dp[j - weight[i - 1]] + value[i - 1]);
-//                System.out.println("j== " + j + "  dp[j]==" + dp[j] + "  other == " + (dp[j - weight[i - 1]] + value[i - 1]));
             }
         }
         System.out.println(dp[v]);

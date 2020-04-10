@@ -1,6 +1,19 @@
 ## 最小的k个数
 
-思路是构建k个数的最大堆，此时第一个元素为堆中最大的元素，然后从k遍历数组，遇到比堆中最大元素小的，则把两个元素交换,遍历完则可以保证堆中的k个数是最小的k个数。此处PriorityQueue可以用buildMaxHeap替代。
+### 题目描述
+
+输入n个整数，找出其中最小的K个数。例如输入4,5,1,6,2,7,3,8这8个数字，则最小的4个数字是1,2,3,4,。
+
+### 思路
+
+思路1：
+
+- 最小堆建立(需要o(n)时间复杂度)
+- 取出前k个数(每次取需要用logn时间重建堆)。时间复杂度为o(n)+o(k*logn)
+
+思路2:
+
+- 用快排partition划分，一直划中第k个数 最差情况o(kn)
 
 ```java
 		/**
@@ -168,3 +181,52 @@ public static int[] mergeSort(int[] array, int low, int high) {
     }
 ```
 
+### 035-数组中的逆序对(归并排序)
+
+## 题目描述
+
+在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组,求出这个数组中的逆序对的总数P。并将P对1000000007取模的结果输出。 即输出P%1000000007
+
+```java
+/**
+ * 035-数组中的逆序对(归并排序)
+ * @param array
+ * @return
+ */
+public int InversePairs(int [] array) {
+    if(array == null || array.length <= 0){
+        return 0;
+    }
+    return merge(array, 0, array.length - 1);
+}
+
+public int merge(int [] arr, int l, int r){
+    if(l >= r){
+        return 0;
+    }
+    int mid = (l + r) >> 1;
+    int res = merge(arr, l, mid) + merge(arr, mid+1, r);
+    int i = l;
+    int j = mid + 1;
+    List<Integer> temp = new ArrayList<>();
+    while(i <= mid && j<= r){
+        if(arr[i] <= arr[j]){
+            temp.add(arr[i++]);
+        }else{
+            res += mid - i + 1;
+            temp.add(arr[j++]);
+        }
+    }
+    while(i <= mid){
+        temp.add(arr[i++]);
+    }
+    while(j <= r){
+        temp.add(arr[j++]);
+    }
+    i = l;
+    for(int k:temp){
+        arr[i++] = k;
+    }
+    return res;
+}
+```

@@ -53,8 +53,6 @@ public class StringTest {
 
 //        printComplementCode(-10);
 
-        System.out.println(NumberOf1(4));
-
 
         System.out.println();
 
@@ -68,12 +66,36 @@ public class StringTest {
         s.a = "bbb";
     }
 
-    public static int NumberOf1(int n) {
-        int count = 0;
+    public static String replaceSpace2(StringBuffer str) {
+        int count = getSpaceCount(str);
+        int len = str.length();
+        int newLen = len + count * 2;
+        char[] strArr = new char[newLen];
 
-        while (n != 0) {
-            ++count;
-            n = n & n - 1;
+        System.arraycopy(str.toString().toCharArray(), 0, strArr, 0, len);
+        int index = len - 1, indexNew = newLen - 1;
+        while (index >= 0 && index != indexNew) {
+            if (strArr[index] != ' ') {
+                strArr[indexNew--] = strArr[index--];
+            } else {
+                strArr[indexNew--] = '0';
+                strArr[indexNew--] = '2';
+                strArr[indexNew--] = '%';
+                index--;
+            }
+        }
+        return String.copyValueOf(strArr);
+    }
+
+    public static int getSpaceCount(StringBuffer str) {
+        if (str == null || str.length() <= 0) {
+            return 0;
+        }
+        int count = 0;
+        for (int i = 0; i < str.length(); i++) {
+            if (str.charAt(i) == ' ') {
+                count++;
+            }
         }
         return count;
     }
@@ -159,85 +181,6 @@ public class StringTest {
             }
         }
         return null;
-    }
-
-    public static String replaceSpace(String str) {
-        if (str == null) {
-            throw new RuntimeException("str is null");
-        }
-
-        int count = getSpaceCount(str);
-
-        int newLength = str.length() + count * 2;
-        int length = str.length();
-
-        char[] newArr = new char[newLength];
-
-        System.arraycopy(str.toCharArray(), 0, newArr, 0, length);
-        int index1 = length - 1;
-        int index2 = newLength - 1;
-
-        while (index1 >= 0 && index1 != index2) {
-
-            if (newArr[index1] == ' ') {
-                newArr[index2--] = '0';
-                newArr[index2--] = '2';
-                newArr[index2--] = '%';
-            } else {
-                newArr[index2--] = newArr[index1];
-            }
-
-            index1--;
-
-        }
-
-        return String.copyValueOf(newArr);
-
-    }
-
-    private static int getSpaceCount(String str) {
-        int count = 0;
-        for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i) == ' ') {
-                count++;
-            }
-        }
-
-        return count;
-    }
-
-    public static String replaceSpace2(StringBuffer str) {
-        int count = getSpaceCount(str);
-        int len = str.length();
-        int newLen = len + count * 2;
-        char[] strArr = new char[newLen];
-
-        System.arraycopy(str.toString().toCharArray(), 0, strArr, 0, len);
-        int index = len - 1, indexNew = newLen - 1;
-        while (index >= 0 && index != indexNew) {
-            if (strArr[index] != ' ') {
-                strArr[indexNew--] = strArr[index--];
-            } else {
-                strArr[indexNew--] = '0';
-                strArr[indexNew--] = '2';
-                strArr[indexNew--] = '%';
-                index--;
-            }
-        }
-        return String.copyValueOf(strArr);
-    }
-
-    public static int getSpaceCount(StringBuffer str) {
-        if (str == null || str.length() <= 0) {
-            return 0;
-        }
-        int count = 0;
-        for (int i = 0; i < str.length(); i++) {
-            if (str.charAt(i) == ' ') {
-                count++;
-            }
-        }
-        return count;
     }
 
 
