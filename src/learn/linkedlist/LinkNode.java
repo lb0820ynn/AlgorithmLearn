@@ -61,26 +61,6 @@ public class LinkNode {
         return list;
     }
 
-
-    /**
-     * 015-反转单链表 递归
-     *
-     * @param head
-     * @return
-     */
-    public static LinkNode reverseLink(LinkNode head) {
-        if (head == null || head.next == null) {
-            return head;
-        }
-
-        LinkNode reverseLink = reverseLink(head.next);
-
-        head.next.next = head;
-        head.next = null;
-
-        return reverseLink;
-    }
-
     /**
      * 014-链表中倒数第k个结点
      *
@@ -107,6 +87,25 @@ public class LinkNode {
             second = second.next;
         }
         return second;
+    }
+
+    /**
+     * 015-反转单链表 递归
+     *
+     * @param head
+     * @return
+     */
+    public static LinkNode reverseLink(LinkNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+
+        LinkNode reverseLink = reverseLink(head.next);
+
+        head.next.next = head;
+        head.next = null;
+
+        return reverseLink;
     }
 
     /**
@@ -161,41 +160,28 @@ public class LinkNode {
             return list2;
         }*/
 
-        LinkNode merge;
-
-        if (list1.value < list2.value) {
-            merge = list1;
-            list1 = list1.next;
-        } else {
-            merge = list2;
-            list2 = list2.next;
-        }
-
-        LinkNode temp = merge;
+        LinkNode p = new LinkNode(-1);
+        LinkNode cur = p;
 
         while (list1 != null && list2 != null) {
             if (list1.value < list2.value) {
-                temp.next = list1;
+                cur.next = list1;
                 list1 = list1.next;
             } else {
-                temp.next = list2;
+                cur.next = list2;
                 list2 = list2.next;
             }
-            temp = temp.next;
+            cur = cur.next;
+        }
+        if (list1 != null) {
+            cur.next = list1;
+        } else {
+            cur.next = list2;
         }
 
-        while (list1 != null) {
-            temp.next = list1;
-            list1 = list1.next;
-            temp = temp.next;
-        }
-        while (list2 != null) {
-            temp.next = list2;
-            list2 = list2.next;
-            temp = temp.next;
-        }
-        return merge;
+        return p.next;
     }
+
 
     /**
      * 025-复杂链表的复制
@@ -296,79 +282,92 @@ public class LinkNode {
         return head.next;
     }
 
+    /**
+     * 链表的分区
+     *
+     * @param head
+     * @param x
+     * @return
+     */
+    public LinkNode partition(LinkNode head, int x) {
+        if (head == null) {
+            return head;
+        }
+        LinkNode l1 = new LinkNode(-1);
+        LinkNode l2 = new LinkNode(-1);
+        LinkNode p = l1, q = l2;
+        while (head != null) {
+            if (head.value < x) {
+                p.next = head;
+                p = p.next;
+            } else {
+                q.next = head;
+                q = q.next;
+            }
+            head = head.next;
+        }
+        q.next = null;
+        p.next = l2.next;
+        return l1.next;
+    }
 
+    public LinkNode addTwoNumbers(LinkNode l1, LinkNode l2) {
+        Stack<Integer> s1 = new Stack<>();
+        Stack<Integer> s2 = new Stack<>();
+        while (l1 != null) {
+            s1.push(l1.value);
+            l1 = l1.next;
+        }
+        while (l2 != null) {
+            s2.push(l2.value);
+            l2 = l2.next;
+        }
 
-
+        LinkNode head = null;
+        int flag = 0;
+        while (!s1.isEmpty() || !s2.isEmpty() || flag > 0) {
+            int sum = 0;
+            if (!s1.isEmpty()) {
+                sum += s1.pop();
+            }
+            if (!s2.isEmpty()) {
+                sum += s2.pop();
+            }
+            sum += flag;
+            flag = sum / 10;
+            LinkNode node = new LinkNode(sum % 10);
+            node.next = head;
+            head = node;
+        }
+//        if (flag > 0) {
+//            p.next = new LinkNode(flag);
+//        }
+        return head;
+    }
 
 
     public static void main(String[] args) {
-        LinkNode head = new LinkNode(1);
-        LinkNode head1 = new LinkNode(3);
-        LinkNode head2 = new LinkNode(5);
-        LinkNode head3 = new LinkNode(7);
-        LinkNode head4 = new LinkNode(9);
-
-        LinkNode headOther = new LinkNode(2);
-        LinkNode headOther1 = new LinkNode(4);
-        LinkNode headOther2 = new LinkNode(6);
-        LinkNode headOther3 = new LinkNode(8);
-        LinkNode headOther4 = new LinkNode(10);
+        LinkNode t = new LinkNode(-1);
+        LinkNode head = new LinkNode(7);
+        LinkNode head1 = new LinkNode(2);
+        LinkNode head2 = new LinkNode(4);
+        LinkNode head3 = new LinkNode(3);
 
         head.next = head1;
         head1.next = head2;
         head2.next = head3;
-        head3.next = head4;
-        head4.next = new LinkNode(9);
 
-        headOther.next = headOther1;
-        headOther1.next = headOther2;
-        headOther2.next = headOther3;
-        headOther3.next = headOther4;
+        LinkNode h = new LinkNode(5);
+        LinkNode h1 = new LinkNode(6);
+        LinkNode h2 = new LinkNode(4);
+        h.next = h1;
+        h1.next = h2;
+        LinkNode linkNode = t.addTwoNumbers(head, h);
+        printLink(linkNode);
 
-//        LinkNode reverse = reverseLink(head);
-        //        printLink(reverse);
+//        LinkNode partition = t.partition(head, 3);
+//        printLink(partition);
 
-//        LinkNode dup = deleteDuplication(head);
-//        printLink(dup);
-
-
-//        LinkNode node = getReverseNodeItem(reverse, 2);
-//        System.out.println();
-//        System.out.println(node.value);
-
-//        ArrayList<Integer> integers = printListFromTailToHead(head);
-//
-//        Utils.printList(integers);
-
-//        LinkNode node = FindKthToTail(head, 6);
-//        System.out.print(node.value);
-
-//        reversePrintLink(reverse);
-
-//        printLink(Merge(head, headOther));
-
-//        RandomListNode random1 = new RandomListNode(1);
-//        RandomListNode random2 = new RandomListNode(2);
-//        RandomListNode random3 = new RandomListNode(3);
-//        RandomListNode random4 = new RandomListNode(4);
-//        RandomListNode random5 = new RandomListNode(5);
-//        random1.next = random2;
-//        random1.random = random5;
-//        random2.next = random3;
-//        random2.random = random4;
-//        random3.next = random4;
-//        random3.random = random2;
-//        random4.next = random5;
-//        random4.random = random1;
-//        random5.random = random3;
-//
-//        RandomListNode randomListNode = Clone(random1);
-//
-//        System.out.println();
-//        while (randomListNode != null) {
-//            System.out.print(randomListNode.label + " ");
-//            randomListNode = randomListNode.next;
-//        }
 
     }
 

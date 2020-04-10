@@ -1,6 +1,11 @@
-package learn;
+package learn.other;
 
-import java.util.ArrayList;
+
+import com.sun.tools.javac.util.ArrayUtils;
+import learn.Utils;
+
+import java.awt.*;
+import java.util.*;
 import java.util.List;
 
 /**
@@ -9,33 +14,41 @@ import java.util.List;
 public class ArrayLearn {
 
     public static void main(String[] args) {
+
+        ArrayLearn a = new ArrayLearn();
+
+
 //        int minNum = minNumberInRotateArray(new int[]{3, 4, 5, 1, 2});
 //        System.out.print("min num == " + minNum);
 
 //        int fibonacci = JumpFloor(5);
-        int fibonacci = JumpFloorII(3);
-        System.out.print("fibonaci == " + fibonacci);
-
-        int[] array = new int[]{3, 4, 5, 1, 2};
-        reOrderArray(array);
-        System.out.print("reorderArray == " + array);
-
-        System.out.println();
+//        int fibonacci = JumpFloorIIdp(6);
+//        int fibonacci2 = JumpFloorII(6);
+//        System.out.println("fibonacidp == " + fibonacci + " fibonacci = " + fibonacci2);
+//
+//        int[] array = new int[]{3, 4, 5, 1, 2};
+//        reOrderArray(array);
+//        System.out.println("reorderArray == " + array);
+//
+//        System.out.println();
 
 //        int[][] matrixArray = {{1, 2, 3, 4}, {5, 6, 7, 8}, {9, 10, 11, 12}, {13, 14, 15, 16}};
         int[][] matrixArray = {{1, 2}, {3, 4}, {5, 6}, {7, 8}, {9, 10}, {11, 12}, {13, 14}, {15, 16}};
 //        int[][] matrixArray = {{1, 2, 3, 4, 5}, {6, 7, 8, 9, 10}, {11, 12, 13, 14, 15}};
-        printMatrix(matrixArray);
+        ArrayList<Integer> list = printMatrix2(matrixArray);
+        Utils.printList(list);
 
-        System.out.println();
-        int[] arr = new int[]{1, 2, 3, 2, 2, 2, 5, 4, 2, 1};
-        int result = MoreThanHalfNum_Solution(arr);
-        System.out.print(result);
-
-        System.out.println();
-
-        System.out.print(Power(2, 5));
-
+//        System.out.println();
+//        int[] arr = new int[]{1, 2, 3, 2, 2, 2, 5, 4, 2, 1};
+//        int result = MoreThanHalfNum_Solution(arr);
+//        System.out.print(result);
+//
+//        System.out.println();
+//
+//        System.out.print(Power(2, 5));
+        int[] arr = {1, 2, 3, 3, 3, 3, 3, 3, 4};
+        int i = a.GetNumberOfK(arr, 3);
+        System.out.println("k num == " + i);
     }
 
     /**
@@ -87,6 +100,12 @@ public class ArrayLearn {
         return min;
     }
 
+    /**
+     * 07-斐波拉契数列
+     *
+     * @param n
+     * @return
+     */
     public static int fibonacci(int n) {
         if (n <= 0) {
             return 0;
@@ -104,10 +123,12 @@ public class ArrayLearn {
             num1 = result;
         }
         return result;
+
 //        return fibonacci(n - 1) + fibonacci(n - 2);
     }
 
     /**
+     * 008-跳台阶
      * 一只青蛙一次可以跳上1级台阶，也可以跳上2级。
      * 求该青蛙跳上一个n级的台阶总共有多少种跳法（先后次序不同算不同的结果）。
      *
@@ -133,6 +154,8 @@ public class ArrayLearn {
     }
 
     /**
+     * 009-变态跳台阶
+     * <p>
      * 一只青蛙一次可以跳上1级台阶，也可以跳上2级……它也可以跳上n级。
      * 求该青蛙跳上一个n级的台阶总共有多少种跳法。
      *
@@ -149,6 +172,32 @@ public class ArrayLearn {
 
         return 1 << (target - 1);
 //        return 2 * JumpFloorII(target - 1);
+    }
+
+    /**
+     * 变态跳台阶(动态规划解法)
+     * @param target
+     * @return
+     */
+    public static int JumpFloorIIdp(int target) {
+        if (target <= 0) {
+            return 0;
+        }
+        if (target < 2) {
+            return 1;
+        }
+
+        int[] dp = new int[target + 1];
+        dp[0] = 1;
+        for (int i = 1; i <= target; i++) {
+            for (int j = 1; j <= target; j++) {
+                if (i < j) {
+                    continue;
+                }
+                dp[i] = dp[i] + dp[i - j];
+            }
+        }
+        return dp[target];
     }
 
     /**
@@ -176,6 +225,33 @@ public class ArrayLearn {
         for (int k = 0; k < evenList.size(); k++) {
             array[k + endIndexOdd] = evenList.get(k);
         }
+    }
+
+    public static ArrayList<Integer> printMatrix2(int[][] matrix) {
+        ArrayList<Integer> arr = new ArrayList<>();
+        if (matrix == null || matrix.length <= 0) {
+            return arr;
+        }
+        int n = matrix.length;
+        int m = matrix[0].length;
+        boolean[][] bs = new boolean[n][m];
+        int[] dx = new int[]{-1, 0, 1, 0};
+        int[] dy = new int[]{0, 1, 0, -1};
+        int x = 0, y = 0, d = 1;
+        for (int i = 0; i < n * m; i++) {
+            arr.add(matrix[x][y]);
+            bs[x][y] = true;
+            int a = x + dx[d];
+            int b = y + dy[d];
+            if (a < 0 || a >= n || b < 0 || b >= m || bs[a][b]) {
+                d = (d + 1) % 4;
+                a = x + dx[d];
+                b = y + dy[d];
+            }
+            x = a;
+            y = b;
+        }
+        return arr;
     }
 
 
@@ -227,6 +303,7 @@ public class ArrayLearn {
 
 
     /**
+     * 数组求众数
      * 数组中有一个数字出现的次数超过数组长度的一半，请找出这个数字。
      * 例如输入一个长度为9的数组{1,2,3,2,2,2,5,4,2}。由于数字2在数组中出现了5次，超过数组长度的一半，因此输出2。如果不存在则输出0。
      *
@@ -312,5 +389,44 @@ public class ArrayLearn {
         else
             return false;
     }
+
+
+    /**
+     * 数字在排序数组中出现的次数
+     *
+     * @param array
+     * @param k
+     * @return
+     */
+    public int GetNumberOfK(int[] array, int k) {
+        int i1 = biSearch(array, k + 0.5d);
+        int i2 = biSearch(array, k - 0.5d);
+        if (array[array.length - 1] == k) {
+            i1 += 1;
+        }
+        return i1 - i2;
+    }
+
+    /**
+     * 二分查找
+     *
+     * @param arr
+     * @param n
+     * @return
+     */
+    public int biSearch(int[] arr, double n) {
+        int l = 0;
+        int r = arr.length - 1;
+        while (l < r) {
+            int mid = l + r >> 1;
+            if (arr[mid] < n) {
+                l = mid + 1;
+            } else if (arr[mid] > n) {
+                r = mid;
+            }
+        }
+        return l;
+    }
+
 
 }

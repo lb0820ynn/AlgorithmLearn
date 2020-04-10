@@ -289,6 +289,30 @@ public class TreeNode {
     }
 
     /**
+     * 018-二叉树的镜像 非递归
+     *
+     * @param node
+     */
+    private static void mirro(TreeNode node) {
+        Stack<TreeNode> stack = new Stack<>();
+        stack.push(node);
+
+        while (!stack.isEmpty()) {
+            TreeNode tmp = stack.pop();
+            TreeNode left = tmp.left;
+            TreeNode right = tmp.right;
+            tmp.right = left;
+            tmp.left = right;
+            if (left != null) {
+                stack.push(left);
+            }
+            if (right != null) {
+                stack.push(right);
+            }
+        }
+    }
+
+    /**
      * 022-从上往下打印出二叉树的每个节点，同层节点从左至右打印。
      *
      * @param root
@@ -377,6 +401,7 @@ public class TreeNode {
 
 
     private static TreeNode pLast = null;
+
 
     /**
      * 026-二叉搜索树与双向链表
@@ -633,9 +658,6 @@ public class TreeNode {
     }
 
 
-
-
-
     public static void main(String[] args) {
 //        TreeNode node = new TreeNode(4);
 //        TreeNode node1 = new TreeNode(5);
@@ -650,12 +672,20 @@ public class TreeNode {
 //        TreeNode rootOther = new TreeNode(2, nodeOther1, nodeOther2);
 
 
-        TreeNode node = new TreeNode(4);
-        TreeNode node1 = new TreeNode(7);
+//        TreeNode node = new TreeNode(4);
+//        TreeNode node1 = new TreeNode(7);
+////        TreeNode node3 = new TreeNode(6);
+//        TreeNode node2 = new TreeNode(5, node, node1);
+//        TreeNode node4 = new TreeNode(12, null, null);
+//        TreeNode root = new TreeNode(10, node2, node4);
+        TreeNode node2 = new TreeNode(2);
+        TreeNode node5 = new TreeNode(5);
+        TreeNode node6 = new TreeNode(6);
+        TreeNode node7 = new TreeNode(7, node6);
+        TreeNode node4 = new TreeNode(4, node5, node7);
+        TreeNode node3 = new TreeNode(3, null, node4);
+        TreeNode node1 = new TreeNode(1, node2, node3);
 //        TreeNode node3 = new TreeNode(6);
-        TreeNode node2 = new TreeNode(5, node, node1);
-        TreeNode node4 = new TreeNode(12, null, null);
-        TreeNode root = new TreeNode(10, node2, node4);
 
 
 //        boolean hasSubtree = HasSubtree(root, rootOther);
@@ -665,13 +695,13 @@ public class TreeNode {
 //
 //        firTraver(root);
 
-        lastTraver(root);
+        middleTraver(node1);
 
         System.out.println();
 //        printFromTopToBottom(root);
 
-        ArrayList<ArrayList<Integer>> list = FindPath(root, 19);
-        Utils.printList(list);
+//        ArrayList<ArrayList<Integer>> list = FindPath(root, 19);
+//        Utils.printList(list);
 
         /**
          1
